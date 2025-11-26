@@ -41,3 +41,4 @@ graficas/
 *.fls
 *.fdb_latexmk
 *.tex
+*.bib
