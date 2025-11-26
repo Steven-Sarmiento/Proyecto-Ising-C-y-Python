@@ -1,0 +1,43 @@
+# --- GLOBAL ---
+.vscode/
+.DS_Store
+
+# --- C++ (Carpeta cpp) ---
+# Ignorar carpetas de datos y python sobrantes
+cpp/data/
+cpp/python/
+
+# Ignorar el ejecutable compilado (el programa final)
+# OJO: Asumo que 'ising_sim' es el ejecutable (sin extensión en Linux/Mac)
+cpp/ising_sim
+*.exe
+*.o
+
+# IMPORTANTE: No he ignorado 'ising_model' porque en la imagen veo
+# 'ising_model.cpp' y '.hpp'. Si ignoras eso, ¡pierdes tu código fuente!
+# Solo ignoramos los binarios/ejecutables.
+
+# --- PYTHON (Carpeta python) ---
+# Ignorar archivos compilados de python y caché
+__pycache__/
+*.pyc
+
+# Ignorar el entorno virtual (pesa mucho y se recrea, no se sube)
+python/venv/
+venv/
+
+# --- INFORME (LaTeX) ---
+# Ignorar carpeta de gráficas del informe y la global
+Informe/graficas/
+graficas/
+
+# Ignorar toda la "basura" que genera LaTeX al compilar
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.tex
