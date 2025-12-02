@@ -888,11 +888,11 @@ int main() {
     
     try {
         // Orden: de más rápido a más lento
-        //simulate_snapshots(output_dir);
-        //simulate_relaxation(output_dir);
-        //simulate_paramagnetism(output_dir);
+        simulate_snapshots(output_dir);
+        simulate_relaxation(output_dir);
+        simulate_paramagnetism(output_dir);
         simulate_ferromagnetism_hysteresis(output_dir);
-        //simulate_phase_transition(output_dir);  // 
+        simulate_phase_transition(output_dir);  
         
         auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
             std::chrono::high_resolution_clock::now() - t_total_start).count();

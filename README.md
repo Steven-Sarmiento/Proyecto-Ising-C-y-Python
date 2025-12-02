@@ -1,65 +1,56 @@
-# Simulación Monte Carlo del Modelo de Ising en Diferentes Tipos de Redes
+# Simulación Monte Carlo del Modelo de Ising en Redes Cristalinas
 
-Implementación híbrida C++/Python para simulaciones Monte Carlo del modelo de Ising con dinámica de Metropolis, aplicado a múltiples topologías de red cristalina.
+Este repositorio contiene la implementación computacional y el análisis de resultados del "Miniproyecto de Física Estadística", enfocado en la simulación del modelo de Ising con dinámica de Metropolis en diversas topologías y grados de dilución magnética.
 
 ## 👤 Autor
 
-**Jorge Steven Sarmiento Arboleda**  
-Universidad de Antioquia, Medellín, Colombia  
+**Jorge Steven Sarmiento Arboleda** Instituto de Física, Universidad de Antioquia, Medellín, Colombia  
 Curso: Física Estadística (0302470)
 
-## 🔬 Descripción
+---
 
-Este proyecto implementa simulaciones del modelo de Ising para estudiar:
+## 1. Descripción del Proyecto
 
-- **Paramagnetismo** (J=0): Curvas m vs H, ley de estados correspondientes
-- **Ferromagnetismo** (J=1): Histéresis magnética, transiciones de fase
-- **Temperatura crítica**: Estimación de Tc para diferentes topologías y concentraciones
+El proyecto estudia el comportamiento termodinámico de espines clásicos interactuantes bajo el Hamiltoniano de Ising:
 
-### Redes Soportadas
+$$\mathcal{H} = -J \sum_{\langle i, j \rangle} s_i s_j - H \sum_i s_i$$
 
-| Red | Dimensión | Coordinación (z) |
-|-----|-----------|------------------|
-| Cadena | 1D | 2 |
-| Honeycomb (Panal) | 2D | 3 |
-| Cuadrada | 2D | 4 |
-| BCC | 3D | 8 |
+Se investigan sistemáticamente los efectos de la **dimensionalidad** y la **dilución magnética** ($q$) en las transiciones de fase y la histéresis.
+
+### Parámetros del Estudio
+
+- **Topologías ($z$):** Cadena 1D ($z=2$), Honeycomb 2D ($z=3$), Cuadrada 2D ($z=4$) y BCC 3D ($z=8$).
+- **Tamaños del sistema ($L$):** $L=500$ (1D), $L=25$ (2D), $L=8$ (3D).
+- **Dilución ($q$):** Probabilidad de ocupación de espines $q \in \{0.5, 0.8, 1.0\}$.
+- **Regímenes:**
+  - Paramagnético ($J=0$)
+  - Ferromagnético ($J=1$)
+
+---
 
 ## 📁 Estructura del Proyecto
 
 ```text
 proyecto_ising_hibrido/
-├── cpp/
-│   ├── ising_model.hpp        # Definición de la clase IsingModel
-│   ├── ising_model.cpp        # Implementación del modelo
-│   ├── main.cpp               # Funciones de simulación y main
+├── cpp/                       # Núcleo de simulación (C++)
+│   ├── ising_model.hpp        # Clase IsingModel
+│   ├── ising_model.cpp        # Lógica de Metropolis y observables
+│   ├── main.cpp               # Orquestador de simulaciones
 │   ├── ising_sim              # Ejecutable compilado
-│   └── data/                  # Datos binarios generados
-│       ├── paramagnetismo/
-│       ├── ferromagnetismo/
-│       ├── transicion/
-│       ├── temperatura_critica/
-│       ├── snapshots/
-│       └── relax/
-├── python/
+│   └── data/                  # Salida de datos binarios
+├── python/                    # Análisis y Graficado (Python)
+│   ├── main.py                # Script principal de generación de gráficas
 │   ├── src/
-│   │   ├── config.py          # Configuración y constantes
-│   │   ├── reader.py          # Lectores de datos binarios
-│   │   ├── plotter.py         # Sistema de graficado
-│   │   ├── utils.py           # Funciones auxiliares
-│   │   └── __init__.py
-│   ├── main.py                # Punto de entrada para gráficas
-│   └── graficas/              # Gráficas generadas
-│       ├── paramagnetismo/
-│       ├── ferromagnetismo/
-│       ├── transicion/
-│       ├── snapshots/
-│       └── relajacion/
-├── requirements.txt
-├── README.md
-└── venv/
-```
-
+│   │   ├── config.py          # Rutas y constantes físicas
+│   │   ├── reader.py          # Lectura de binarios C++
+│   │   ├── plotter.py         # Motores de graficado científico
+│   │   └── utils.py           # Análisis estadístico (Blocking Method)
+└── graficas/                  # Resultados visuales (Output)
+    ├── paramagnetismo/
+    ├── ferromagnetismo/       # Ciclos de histéresis
+    ├── transicion/            # Curvas M vs T y Energía
+    ├── snapshots/             # Configuraciones de espines
+    └── relajacion/            # Evolución temporal
 ## 🚀 Instalación y Uso
 
 ### 1. Compilar C++
@@ -134,7 +125,6 @@ El código usa unidades naturales:
 
 - **Ley de Estados Correspondientes**: Colapso de datos m vs H/T
 - **Ajuste Tanh**: $m = a \cdot \tanh(b \cdot H/T)$ con bondad de ajuste $\chi^2$
-- **Susceptibilidad**: $\chi = \text{Var}(m)/T$ con errores por blocking
 - **Temperatura Crítica**: Estimada por máxima pendiente de m(T)
 
 ## 📊 Ejemplos de Resultados
@@ -163,7 +153,9 @@ El código usa unidades naturales:
 
 ## 📄 Licencia
 
-MIT License - Ver archivo LICENSE para más detalles.
+Este código es parte de un trabajo académico. Se permite su uso y modificación con la debida atribución.
+
+Este proyecto utilizó herramientas de IA (Claude, DeepSeek, Gemini, ChatGPT y NotebookLM) como soporte auxiliar en la depuración de código y refinamiento de redacción, bajo supervisión humana crítica.
 
 ---
 

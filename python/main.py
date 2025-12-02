@@ -1023,13 +1023,13 @@ def main() -> int:
         return 1
     
     try:
-        #plot_paramagnetism()
-        #plot_reduced_magnetization()
-        #plot_susceptibility()
+        plot_paramagnetism()
+        plot_reduced_magnetization()
+        plot_susceptibility()
         plot_hysteresis()
-        #plot_phase_transitions()
-        #plot_snapshots()
-        #plot_relaxation()
+        plot_phase_transitions()
+        plot_snapshots()
+        plot_relaxation()
         
         print("\n" + "="*70)
         print("✅ ANÁLISIS COMPLETADO")
